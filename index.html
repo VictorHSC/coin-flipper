@@ -8,6 +8,7 @@
     <title>Coin Flipper</title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="heads.png">
+    <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
@@ -46,6 +47,13 @@
         <input id="input_quantity" type="range" min="1" max="5" value="1" oninput="inputQuantity(event)">
     </div>
 </body>
+<script>
+    if (!navigator.serviceWorker.controller) {
+        navigator.serviceWorker.register("/sw.js").then(function (reg) {
+            console.log("Service worker has been registered for scope: " + reg.scope);
+        });
+    }
+</script>
 
 <script src="script.js"></script>
 
