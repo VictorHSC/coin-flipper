@@ -1,0 +1,163 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #4f4f4f;
+}
+
+.coins {
+    position: absolute;
+    width: 100%;
+    height: 75%;
+}
+
+.coin {
+    display: none;
+    position: absolute;
+    width: 10em;
+    height: 10em;
+    cursor: pointer;
+}
+
+.coin.show {
+    display: block;
+}
+
+#coin1 {
+    top: calc(25% - 5em);
+    left: calc(25% - 5em);
+}
+
+#coin2 {
+    top: calc(25% - 5em);
+    left: calc(75% - 5em);
+}
+
+#coin3 {
+    top: calc(50% - 5em);
+    left: calc(50% - 5em);
+}
+
+#coin4 {
+    top: calc(75% - 5em);
+    left: calc(25% - 5em);
+}
+
+#coin5 {
+    top: calc(75% - 5em);
+    left: calc(75% - 5em);
+}
+
+.coin div {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-size: contain;
+}
+
+.side-a {
+    background: url(heads.png);
+}
+
+.side-b {
+    background: url(tails.png);
+}
+
+.coin {
+    transition: transform 1s ease-in;
+    transform-style: preserve-3d;
+}
+
+.coin div {
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.side-a {
+    z-index: 100;
+}
+
+.side-b {
+    transform: rotateY(-180deg);
+
+}
+
+.coin.heads {
+    animation: flipHeads 1s ease-out forwards;
+}
+
+.coin.tails {
+    animation: flipTails 1s ease-out forwards;
+}
+
+@keyframes flipHeads {
+    from {
+        transform: rotateY(0);
+    }
+
+    to {
+        transform: rotateY(1800deg);
+    }
+}
+
+@keyframes flipTails {
+    from {
+        transform: rotateY(0);
+    }
+
+    to {
+        transform: rotateY(1980deg);
+    }
+}
+
+#result.win::before {
+    content: "WIN";
+    display: block;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%);
+    color: lightgreen;
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#result.lose::before {
+    content: "LOSE";
+    display: block;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%);
+    color: lightcoral;
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#divQuantity {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 20em;
+}
+
+#divQuantity label {
+    line-height: 25px;
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    color: #fff;
+    left: 0;
+}
+
+#divQuantity input {
+    position: absolute;
+    height: 25px;
+    right: 0;
+    margin: 0;
+    padding: 0;
+}

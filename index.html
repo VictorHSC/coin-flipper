@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Flipper</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="heads.png">
+</head>
+
+<body>
+
+    <div class="coins">
+        <div id="coin1" class="coin" onclick="buttonFlipClick(event)">
+            <div class="side-a"></div>
+            <div class="side-b"></div>
+        </div>
+
+        <div id="coin2" class="coin" onclick="buttonFlipClick(event)">
+            <div class="side-a"></div>
+            <div class="side-b"></div>
+        </div>
+
+        <div id="coin3" class="coin show" onclick="buttonFlipClick(event)">
+            <div class="side-a"></div>
+            <div class="side-b"></div>
+        </div>
+
+        <div id="coin4" class="coin" onclick="buttonFlipClick(event)">
+            <div class="side-a"></div>
+            <div class="side-b"></div>
+        </div>
+
+        <div id="coin5" class="coin" onclick="buttonFlipClick(event)">
+            <div class="side-a"></div>
+            <div class="side-b"></div>
+        </div>
+    </div>
+
+    <h1 id="result"></h1>
+
+    <div id="divQuantity">
+        <label for="input_quantity">Coins: <em id="quantity">1</em></label>
+        <input id="input_quantity" type="range" min="1" max="5" value="1" oninput="inputQuantity(event)">
+    </div>
+</body>
+
+<script src="script.js"></script>
+
+</html>
