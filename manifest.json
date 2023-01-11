@@ -1,9 +1,9 @@
 {
-    "name": "Coin Flipper",
-    "theme_color": "#2196f3",
-    "background_color": "#2196f3",
-    "display": "fullscreen",
-    "orientation": "portrait",
-    "scope": "/",
-    "start_url": "https://victorhsc.github.io/coin-flipper/"
-  }
+  "name": "Coin Flipper",
+  "theme_color": "#4f4f4f",
+  "background_color": "#4f4f4f",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "https://victorhsc.github.io/coin-flipper/"
+}

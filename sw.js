@@ -1,6 +1,7 @@
 const CACHE_NAME = 'my-cache';
 const urlsToCache = [
     '/coin-flipper/',
+    '/coin-flipper/manifest.json',
     '/coin-flipper/images/heads.png',
     '/coin-flipper/images/tails.png',
     '/coin-flipper/scripts/main.js',
