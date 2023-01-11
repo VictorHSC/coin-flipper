@@ -60,11 +60,11 @@ body {
 }
 
 .side-a {
-    background: url(heads.png);
+    background: url(../images/heads.png);
 }
 
 .side-b {
-    background: url(tails.png);
+    background: url(../images/tails.png);
 }
 
 .coin {

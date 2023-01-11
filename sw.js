@@ -1,51 +1,35 @@
-self.addEventListener("install", function (event) {
-    event.waitUntil(preLoad());
+const CACHE_NAME = 'my-cache';
+const urlsToCache = [
+    '/coin-flipper/',
+    '/coin-flipper/images/heads.png',
+    '/coin-flipper/images/tails.png',
+    '/coin-flipper/scripts/main.js',
+    '/coin-flipper/scripts/script.js',
+    '/coin-flipper/styles/style.css'
+];
+
+self.addEventListener('install', event => {
+    console.log('Service worker installing...');
+    event.waitUntil(cacheFiles())
+    self.skipWaiting();
+    console.log('Service worker installed!');
 });
 
-var preLoad = function () {
-    console.log("Installing web app");
-    return caches.open("offline").then(function (cache) {
-        console.log("caching index and important routes");
-        return cache.addAll(["/", "/offline.html"]);
-    });
-};
-
-self.addEventListener("fetch", function (event) {
-    event.respondWith(checkResponse(event.request).catch(function () {
-        return returnFromCache(event.request);
-    }));
-    event.waitUntil(addToCache(event.request));
+self.addEventListener('activate', event => {
+    console.log('Service worker activating...');
+    console.log('Service worker activated!');
 });
 
-var checkResponse = function (request) {
-    return new Promise(function (fulfill, reject) {
-        fetch(request).then(function (response) {
-            if (response.status !== 404) {
-                fulfill(response);
-            } else {
-                reject();
-            }
-        }, reject);
-    });
-};
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        caches.match(event.request).then(response => {
+            return response || fetch(event.request);
+        })
+    );
+});
 
-var addToCache = function (request) {
-    return caches.open("offline").then(function (cache) {
-        return fetch(request).then(function (response) {
-            console.log(response.url + " was cached");
-            return cache.put(request, response);
-        });
-    });
-};
-
-var returnFromCache = function (request) {
-    return caches.open("offline").then(function (cache) {
-        return cache.match(request).then(function (matching) {
-            if (!matching || matching.status == 404) {
-                return cache.match("offline.html");
-            } else {
-                return matching;
-            }
-        });
+const cacheFiles = function () {
+    return caches.open(CACHE_NAME).then(cache => {
+        return cache.addAll(urlsToCache);
     });
 };
