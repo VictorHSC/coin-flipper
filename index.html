@@ -1,12 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coin Flipper</title>
+    <meta name="description" content="'Heads I Win, Tails You Lose' Coin Flipper">
+    <meta name="theme-color" content="#0D0D0D">
     <link rel="stylesheet" href="./styles/style.css">
+
+    <!-- Default Icon -->
+    <link rel="shortcut icon" href="./images/icon/icon.ico" type="image/x-icon">
+
+    <!-- Google Icons -->
+    <link rel="icon" href="./images/icon/icon-32x32.png" sizes="32x32">
+    <link rel="icon" href="./images/icon/icon-48x48.png" sizes="48x48">
+    <link rel="icon" href="./images/icon/icon-96x96.png" sizes="96x96">
+    <link rel="icon" href="./images/icon/icon-144x144.png" sizes="144x144">
+
+    <!-- Apple Icon -->
+    <link rel="apple-touch-icon" href="./images/icon/icon-192x192.png">
+
+    <!-- Manifest -->
     <link rel="manifest" href="./manifest.json">
 </head>
 
@@ -45,9 +61,17 @@
         <label for="input_quantity">Coins: <em id="quantity">1</em></label>
         <input id="input_quantity" type="range" min="1" max="5" value="1" oninput="inputQuantity(event)">
     </div>
-</body>
 
-<script src="./scripts/main.js"></script>
-<script src="./scripts/script.js"></script>
+    <!-- Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator && !navigator.serviceWorker.controller) {
+            navigator.serviceWorker.register('/coin-flipper/sw.js');
+        }
+    </script>
+
+    <!-- JavaScript Files -->
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/coin-flipper.js"></script>
+</body>
 
 </html>

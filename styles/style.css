@@ -6,7 +6,7 @@ html {
 body {
     margin: 0;
     padding: 0;
-    background: #4f4f4f;
+    background: #E9F2F1;
 }
 
 .coins {
@@ -60,11 +60,11 @@ body {
 }
 
 .side-a {
-    background: url(../images/heads.png);
+    background: url(../images/heads-medium.webp);
 }
 
 .side-b {
-    background: url(../images/tails.png);
+    background: url(../images/tails-medium.webp);
 }
 
 .coin {

@@ -1,12 +1,19 @@
 const CACHE_NAME = 'my-cache';
 const urlsToCache = [
     '/coin-flipper/',
-    '/coin-flipper/manifest.json',
-    '/coin-flipper/images/heads.png',
-    '/coin-flipper/images/tails.png',
-    '/coin-flipper/scripts/main.js',
-    '/coin-flipper/scripts/script.js',
-    '/coin-flipper/styles/style.css'
+    '/coin-flipper/images/icon/icon-32x32.png',
+    '/coin-flipper/images/icon/icon-48x48.png',
+    '/coin-flipper/images/icon/icon-96x96.png',
+    '/coin-flipper/images/icon/icon-144x144.png',
+    '/coin-flipper/images/icon/icon-192x192.png',
+    '/coin-flipper/images/icon/icon-512x512.png',
+    '/coin-flipper/images/icon/icon.ico',
+    '/coin-flipper/images/heads-large.webp',
+    '/coin-flipper/images/heads-medium.webp',
+    '/coin-flipper/images/heads-small.webp',
+    '/coin-flipper/images/tails-large.webp',
+    '/coin-flipper/images/tails-medium.webp',
+    '/coin-flipper/images/tails-small.webp'
 ];
 
 self.addEventListener('install', event => {
@@ -24,7 +31,7 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
     event.respondWith(
         caches.match(event.request).then(response => {
-            return response || fetch(event.request);
+            return fetch(event.request) || response;
         })
     );
 });

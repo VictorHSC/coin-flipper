@@ -1,9 +1,25 @@
 {
   "name": "Coin Flipper",
-  "theme_color": "#4f4f4f",
-  "background_color": "#4f4f4f",
+  "short_name": "Coin",
+  "description": "'Heads I Win, Tails You Lose' Coin Flipper",
+  "theme_color": "#0D0D0D",
+  "background_color": "#E9F2F1",
   "display": "fullscreen",
   "orientation": "portrait",
-  "scope": "/",
-  "start_url": "https://victorhsc.github.io/coin-flipper/"
+  "scope": "/coin-flipper/",
+  "start_url": "https://victorhsc.github.io/coin-flipper/",
+  "icons": [
+    {
+      "src": "/coin-flipper/images/icon/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/coin-flipper/images/icon/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
 }
