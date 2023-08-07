@@ -1,4 +1,3 @@
-const CACHE_NAME = 'my-cache';
 const urlsToCache = [
     '/coin-flipper/',
     '/coin-flipper/images/icon/icon-32x32.png',
@@ -13,13 +12,15 @@ const urlsToCache = [
     '/coin-flipper/images/heads-small.webp',
     '/coin-flipper/images/tails-large.webp',
     '/coin-flipper/images/tails-medium.webp',
-    '/coin-flipper/images/tails-small.webp'
+    '/coin-flipper/images/tails-small.webp',
+    '/coin-flipper/scripts/coin-flipper.js',
+    '/coin-flipper/styles/style.css'
 ];
 
 self.addEventListener('install', event => {
     console.log('Service worker installing...');
     event.waitUntil(
-        caches.open(CACHE_NAME)
+        caches.open('v1')
             .then(cache => {
                 return cache.addAll(urlsToCache);
             })
