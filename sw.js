@@ -24,7 +24,6 @@ self.addEventListener('install', event => {
                 return cache.addAll(urlsToCache);
             })
     );
-    self.skipWaiting();
     console.log('Service worker installed!');
 });
 
