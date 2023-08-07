@@ -1,15 +1,17 @@
 var coin_quantity = 1;
 
-const coin1 = document.getElementById("coin1");
-const coin2 = document.getElementById("coin2");
-const coin3 = document.getElementById("coin3");
-const coin4 = document.getElementById("coin4");
-const coin5 = document.getElementById("coin5");
+const wrappers = document.querySelectorAll('.wrappers > div');
+
+const wrapper_one = document.querySelector('.wrappers > .one');
+const wrapper_two = document.querySelector('.wrappers > .two');
+const wrapper_four = document.querySelector('.wrappers > .four');
+
+const coins = document.querySelectorAll('.coin');
 
 const result = document.getElementById("result");
 
-function buttonFlipClick() {
-    const visible_coins = document.querySelectorAll(".coin.show");
+coins.forEach(element => element.addEventListener('click', () => {
+    const visible_coins = document.querySelectorAll('.wrappers > div[style=\"display: block;\"] > .coin');
     result.className = "";
     let win = false;
     visible_coins.forEach((element) => {
@@ -28,46 +30,22 @@ function buttonFlipClick() {
     setTimeout(function () {
         result.className = win ? "win" : "lose";
     }, 1100);
-}
+}));
 
 function inputQuantity(event) {
     coin_quantity = +event.target.value;
 
+    wrappers.forEach(element => element.style.display = 'none');
+
     switch (coin_quantity) {
         case 2:
-            coin1.classList.add("show");
-            coin2.classList.remove("show");
-            coin3.classList.remove("show");
-            coin4.classList.remove("show");
-            coin5.classList.add("show");
-            break;
-        case 3:
-            coin1.classList.add("show");
-            coin2.classList.remove("show");
-            coin3.classList.add("show");
-            coin4.classList.remove("show");
-            coin5.classList.add("show");
+            wrapper_two.style.display = 'block';
             break;
         case 4:
-            coin1.classList.add("show");
-            coin2.classList.add("show");
-            coin3.classList.remove("show");
-            coin4.classList.add("show");
-            coin5.classList.add("show");
-            break;
-        case 5:
-            coin1.classList.add("show");
-            coin2.classList.add("show");
-            coin3.classList.add("show");
-            coin4.classList.add("show");
-            coin5.classList.add("show");
+            wrapper_four.style.display = 'block';
             break;
         default:
-            coin1.classList.remove("show");
-            coin2.classList.remove("show");
-            coin3.classList.add("show");
-            coin4.classList.remove("show");
-            coin5.classList.remove("show");
+            wrapper_one.style.display = 'block';
             break;
     }
     updateQuantityText();
