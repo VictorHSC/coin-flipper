@@ -1,3 +1,4 @@
+const CACHE_NAME = 'v1';
 const urlsToCache = [
     '/coin-flipper/',
     '/coin-flipper/manifest.json',
@@ -21,7 +22,7 @@ const urlsToCache = [
 self.addEventListener('install', event => {
     console.log('Service worker installing...');
     event.waitUntil(
-        caches.open('v1')
+        caches.open(CACHE_NAME)
             .then(cache => {
                 return cache.addAll(urlsToCache);
             })
