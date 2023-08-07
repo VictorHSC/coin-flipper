@@ -1,5 +1,6 @@
 const urlsToCache = [
     '/coin-flipper/',
+    '/coin-flipper/manifest.json',
     '/coin-flipper/images/icon/icon-32x32.png',
     '/coin-flipper/images/icon/icon-48x48.png',
     '/coin-flipper/images/icon/icon-96x96.png',
@@ -33,11 +34,25 @@ self.addEventListener('activate', event => {
     console.log('Service worker activated!');
 });
 
-self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                return response || fetch(event.request);
-            })
-    );
+self.addEventListener("fetch", event => {
+    async function returnCachedResource() {
+        // Open the app's cache.
+        const cache = await caches.open(CACHE_NAME);
+        // Find the response that was pre-cached during the `install` event.
+        const cachedResponse = await cache.match(event.request.url);
+
+        if (cachedResponse) {
+            // Return the resource.
+            return cachedResponse;
+        } else {
+            // The resource wasn't found in the cache, so fetch it from the network.
+            const fetchResponse = await fetch(event.request.url);
+            // Put the response in cache.
+            cache.put(event.request.url, fetchResponse.clone());
+            // And return the response.
+            return fetchResponse;
+        }
+    }
+
+    event.respondWith(returnCachedResource());
 });
