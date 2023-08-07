@@ -18,7 +18,12 @@ const urlsToCache = [
 
 self.addEventListener('install', event => {
     console.log('Service worker installing...');
-    event.waitUntil(cacheFiles())
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then(cache => {
+                return cache.addAll(urlsToCache);
+            })
+    );
     self.skipWaiting();
     console.log('Service worker installed!');
 });
@@ -35,9 +40,3 @@ self.addEventListener('fetch', event => {
         })
     );
 });
-
-const cacheFiles = function () {
-    return caches.open(CACHE_NAME).then(cache => {
-        return cache.addAll(urlsToCache);
-    });
-};

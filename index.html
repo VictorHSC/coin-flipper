@@ -65,13 +65,12 @@
 
     <!-- Service Worker -->
     <script>
-        if ('serviceWorker' in navigator && !navigator.serviceWorker.controller) {
+        if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/coin-flipper/sw.js');
         }
     </script>
 
     <!-- JavaScript Files -->
-    <script src="./scripts/main.js"></script>
     <script src="./scripts/coin-flipper.js"></script>
 </body>
 
